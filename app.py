@@ -10,7 +10,7 @@ from src.regression import regression_module
 st.set_page_config(layout="wide", page_title="Health Drink Dashboard")
 st.title("Health Drink Survey Dashboard")
 
-# Data source selection
+# Data source selectio
 # In app.py, under Data Source section
 st.sidebar.header("Data Source")
 data_option = st.sidebar.radio("Choose source:", ["GitHub URL", "Upload CSV"])
