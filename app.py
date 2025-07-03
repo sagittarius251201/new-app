@@ -11,15 +11,13 @@ st.set_page_config(layout="wide", page_title="Health Drink Dashboard")
 st.title("Health Drink Survey Dashboard")
 
 # Data source selection
+# In app.py, under Data Source section
 st.sidebar.header("Data Source")
 data_option = st.sidebar.radio("Choose source:", ["GitHub URL", "Upload CSV"])
 if data_option == "GitHub URL":
-    url = st.sidebar.text_input("Enter raw GitHub CSV URL")
-    if url:
-        df = load_data(url)
-    else:
-        st.warning("Please enter a valid URL.")
-        st.stop()
+    default_url = "https://raw.githubusercontent.com/sagittarius251201/new-app/refs/heads/main/health_drink_survey_1000_responses%20(1).csv"
+    url = st.sidebar.text_input("Enter raw GitHub CSV URL", value=default_url)
+    df = load_data(url)
 else:
     uploaded_file = st.sidebar.file_uploader("Upload CSV file", type="csv")
     if uploaded_file:
@@ -27,6 +25,7 @@ else:
     else:
         st.warning("Please upload a CSV file.")
         st.stop()
+
 
 # Main tabs
 tabs = st.tabs(["Data Visualization", "Classification", "Clustering", "Association Rule Mining", "Regression"])
